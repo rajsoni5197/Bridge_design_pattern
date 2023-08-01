@@ -1,0 +1,50 @@
+@startuml
+
+class Client
+{
+    +Client():void;
+}
+Client ----> Animal
+note top of Animal: Abstraction 
+abstract Animal
+{
+    #moveType: MoveType*;
+    + {virtual } makeMove():void;
+}
+class Human extends Animal
+{
+    + Human(MoveType):void;
+    + {override} makeMove():void;
+}
+class Fish extends Animal
+{
+    + Fish(MoveType):void;
+    + {override} makeMove():void;
+}
+class Bird extends Animal
+{
+    + Bird(MoveType):void;
+    + {override} makeMove():void;
+}
+
+note top of MoveType: Implementation
+interface MoveType
+{
+    +move():void;
+}
+class Walk extends MoveType
+{
+    +move():void;
+}
+class Swim extends MoveType 
+{
+    +move():void;
+}
+class Fly extends MoveType
+{
+    +move():void;
+}
+
+Animal o- MoveType
+
+
